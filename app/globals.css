@@ -1,0 +1,110 @@
+import Link from "next/link";
+import ControllerDiagram from "./components/controller-diagram";
+import { featureLessons } from "./lib/lessons";
+
+export default function Home() {
+  return (
+    <main className="page-shell">
+      <header className="topbar">
+        <div className="brand-block">
+          <span className="brand-mark">P</span>
+          <div>
+            <p className="eyebrow">Pioneer DJ Mastery</p>
+            <h1>Pioneer DJ Technique Lab</h1>
+          </div>
+        </div>
+        <nav className="nav">
+          <Link href="/">Home</Link>
+          <Link href="/gear">Gear</Link>
+          <Link href="/techniques">Techniques</Link>
+        </nav>
+      </header>
+
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="tag">Built for serious bedroom and big-room performance</p>
+          <h2>Turn your Pioneer setup into a performance engine.</h2>
+          <p className="subtext">
+            Learn the exact controller, mixer, and FX movements that separate clean DJ sets
+            from average ones. This experience is designed around the CDJ-3000X, V10 mixer,
+            and RX2 all-in-one controller.
+          </p>
+          <div className="cta-row">
+            <Link href="/techniques" className="primary-btn">
+              Explore techniques
+            </Link>
+            <Link href="/gear" className="secondary-btn">
+              View gear map
+            </Link>
+          </div>
+        </div>
+
+        <div className="hero-card">
+          <div className="mini-stats">
+            <div>
+              <strong>3</strong>
+              <span>core gear systems</span>
+            </div>
+            <div>
+              <strong>12+</strong>
+              <span>advanced skills</span>
+            </div>
+            <div>
+              <strong>1</strong>
+              <span>performance mindset</span>
+            </div>
+          </div>
+          <div className="color-strip" />
+        </div>
+      </section>
+
+      <section className="gear-grid">
+        <article className="gear-card highlight">
+          <span className="gear-tag">CDJ-3000X</span>
+          <h3>Performance deck control</h3>
+          <p>Looping, cueing, browsing, and real-time live transitions designed for modern sets.</p>
+        </article>
+        <article className="gear-card">
+          <span className="gear-tag">V10</span>
+          <h3>Mixer precision</h3>
+          <p>Channel balance, sculpting, FX blending, and fader choreography for advanced movement.</p>
+        </article>
+        <article className="gear-card">
+          <span className="gear-tag">RX2</span>
+          <h3>All-in-one flow</h3>
+          <p>Compact control surface designed for fast transitions, tight loops, and confidence at the booth.</p>
+        </article>
+      </section>
+
+      <section className="feature-section">
+        <div className="section-heading">
+          <p className="eyebrow">Technique library</p>
+          <h3>Moves that feel musical, not just technical</h3>
+        </div>
+
+        <div className="technique-list">
+          {featureLessons.map((lesson) => (
+            <article key={lesson.title} className="lesson-card">
+              <div className="lesson-badge">{lesson.level}</div>
+              <h4>{lesson.title}</h4>
+              <p>{lesson.summary}</p>
+              <ul>
+                {lesson.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="diagram-section">
+        <div className="section-heading narrow">
+          <p className="eyebrow">Interactive breakdown</p>
+          <h3>Understand where the movement happens</h3>
+        </div>
+        <ControllerDiagram />
+      </section>
+    </main>
+  );
+}
