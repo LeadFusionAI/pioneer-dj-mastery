@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { lessonLibrary } from "./lib/lessons";
 
 export default function GearPage() {
   return (
@@ -8,8 +7,8 @@ export default function GearPage() {
         <div className="brand-block">
           <span className="brand-mark">P</span>
           <div>
-            <p className="eyebrow">Mastery path</p>
-            <h1>Gear Map</h1>
+            <p className="eyebrow">Pioneer DJ Mastery</p>
+            <h1>Gear map</h1>
           </div>
         </div>
         <nav className="nav">
@@ -21,60 +20,42 @@ export default function GearPage() {
 
       <section className="page-header-card">
         <p className="eyebrow">Focus hardware</p>
-        <h2>Build fluency on the gear you actually own.</h2>
+        <h2>Build your performance language around the exact gear you’re using.</h2>
       </section>
 
       <section className="gear-stack">
         <article className="gear-panel">
-          <div>
-            <span className="gear-tag">CDJ-3000X</span>
-            <h3>Deck control and timing</h3>
-          </div>
+          <span className="feature-tag">CDJ-3000X</span>
+          <h3>Deck precision</h3>
           <ul>
-            <li>Hot cue memory and quick re-entry</li>
-            <li>Loop size decisions and bar-based transitions</li>
-            <li>Slip, reverse, and phrase control</li>
-            <li>Browsing and track prep under pressure</li>
+            <li>Hot cue placement for phrase aware jumps</li>
+            <li>Loop entry and exit with bar discipline</li>
+            <li>Beat jump and slip logic for quick re-entry</li>
+            <li>Waveform reading without staring at the screen</li>
           </ul>
         </article>
 
         <article className="gear-panel">
-          <div>
-            <span className="gear-tag">V10 Mixer</span>
-            <h3>FX and blend architecture</h3>
-          </div>
+          <span className="feature-tag">DJM-V10</span>
+          <h3>Blend architecture</h3>
           <ul>
-            <li>Channel volume and EQ shaping</li>
-            <li>FX send depth and return timing</li>
-            <li>Three-four and bar-based echo movement</li>
-            <li>Crossfader contour and transition clean-up</li>
+            <li>EQ carving and filter movement</li>
+            <li>Send FX return on free channels</li>
+            <li>Echo shape and tail control</li>
+            <li>Volume riding without losing the groove</li>
           </ul>
         </article>
 
         <article className="gear-panel">
-          <div>
-            <span className="gear-tag">RX2</span>
-            <h3>Compact booth power</h3>
-          </div>
+          <span className="feature-tag">RX2</span>
+          <h3>Compact booth flow</h3>
           <ul>
-            <li>Quick loop entry and exit</li>
-            <li>Instant performance layering</li>
-            <li>Track-specific workflow and phase awareness</li>
-            <li>FX control without losing the musical shape</li>
+            <li>Fast loop resets and phrase recovery</li>
+            <li>Direct use of filters and FX without heavy setup</li>
+            <li>Confidence in small-room and live-room transitions</li>
+            <li>Strong transitions without overplaying the gear</li>
           </ul>
         </article>
-      </section>
-
-      <section className="stacked-list">
-        {lessonLibrary.map((lesson) => (
-          <article key={lesson.title} className="feature-row">
-            <div>
-              <span className="lesson-pill">{lesson.level}</span>
-              <h3>{lesson.title}</h3>
-            </div>
-            <p>{lesson.summary}</p>
-          </article>
-        ))}
       </section>
     </main>
   );

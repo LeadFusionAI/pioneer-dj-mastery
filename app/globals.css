@@ -1,110 +1,196 @@
-import Link from "next/link";
-import ControllerDiagram from "./components/controller-diagram";
-import { featureLessons } from "./lib/lessons";
+export type Technique = {
+  slug: string;
+  title: string;
+  level: "Beginner" | "Intermediate" | "Advanced";
+  time: string;
+  summary: string;
+  points: string[];
+  steps: string[];
+  listenFor: string[];
+  commonMistakes: string[];
+  practice: string;
+  performanceCue: string;
+};
 
-export default function Home() {
-  return (
-    <main className="page-shell">
-      <header className="topbar">
-        <div className="brand-block">
-          <span className="brand-mark">P</span>
-          <div>
-            <p className="eyebrow">Pioneer DJ Mastery</p>
-            <h1>Pioneer DJ Technique Lab</h1>
-          </div>
-        </div>
-        <nav className="nav">
-          <Link href="/">Home</Link>
-          <Link href="/gear">Gear</Link>
-          <Link href="/techniques">Techniques</Link>
-        </nav>
-      </header>
-
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="tag">Built for serious bedroom and big-room performance</p>
-          <h2>Turn your Pioneer setup into a performance engine.</h2>
-          <p className="subtext">
-            Learn the exact controller, mixer, and FX movements that separate clean DJ sets
-            from average ones. This experience is designed around the CDJ-3000X, V10 mixer,
-            and RX2 all-in-one controller.
-          </p>
-          <div className="cta-row">
-            <Link href="/techniques" className="primary-btn">
-              Explore techniques
-            </Link>
-            <Link href="/gear" className="secondary-btn">
-              View gear map
-            </Link>
-          </div>
-        </div>
-
-        <div className="hero-card">
-          <div className="mini-stats">
-            <div>
-              <strong>3</strong>
-              <span>core gear systems</span>
-            </div>
-            <div>
-              <strong>12+</strong>
-              <span>advanced skills</span>
-            </div>
-            <div>
-              <strong>1</strong>
-              <span>performance mindset</span>
-            </div>
-          </div>
-          <div className="color-strip" />
-        </div>
-      </section>
-
-      <section className="gear-grid">
-        <article className="gear-card highlight">
-          <span className="gear-tag">CDJ-3000X</span>
-          <h3>Performance deck control</h3>
-          <p>Looping, cueing, browsing, and real-time live transitions designed for modern sets.</p>
-        </article>
-        <article className="gear-card">
-          <span className="gear-tag">V10</span>
-          <h3>Mixer precision</h3>
-          <p>Channel balance, sculpting, FX blending, and fader choreography for advanced movement.</p>
-        </article>
-        <article className="gear-card">
-          <span className="gear-tag">RX2</span>
-          <h3>All-in-one flow</h3>
-          <p>Compact control surface designed for fast transitions, tight loops, and confidence at the booth.</p>
-        </article>
-      </section>
-
-      <section className="feature-section">
-        <div className="section-heading">
-          <p className="eyebrow">Technique library</p>
-          <h3>Moves that feel musical, not just technical</h3>
-        </div>
-
-        <div className="technique-list">
-          {featureLessons.map((lesson) => (
-            <article key={lesson.title} className="lesson-card">
-              <div className="lesson-badge">{lesson.level}</div>
-              <h4>{lesson.title}</h4>
-              <p>{lesson.summary}</p>
-              <ul>
-                {lesson.highlights.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="diagram-section">
-        <div className="section-heading narrow">
-          <p className="eyebrow">Interactive breakdown</p>
-          <h3>Understand where the movement happens</h3>
-        </div>
-        <ControllerDiagram />
-      </section>
-    </main>
-  );
-}
+export const techniques: Technique[] = [
+  {
+    slug: "three-quarter-echo-lift",
+    title: "3/4 Echo Lift",
+    level: "Advanced",
+    time: "15 min",
+    summary:
+      "Drop the track volume slightly, build the echo to 75%, then recover the mix with a phrase-aware lift.",
+    points: ["Volume drop", "Echo return", "Phrase timing", "Clean re-entry"],
+    steps: [
+      "Set the bar or loop length to a 3/4 phrase and keep the groove stable before affecting the mix.",
+      "Reduce the incoming channel volume by a touch without losing the kick and bass foundation.",
+      "Increase the echo or delay return to around 75% so the ambience rises without swallowing the track.",
+      "Hold the main groove in the background and ride the mixer to keep the lift musical instead of abrupt.",
+      "On the next phrase, bring the volume back in and use EQ and filter movement to resolve the transition.",
+    ],
+    listenFor: [
+      "The kick should stay locked in and never disappear behind the delay.",
+      "The echo should feel like a lift, not a wash of reverb across the whole mix.",
+      "The transition should resolve on the next phrase, not in the middle of a bar.",
+    ],
+    commonMistakes: [
+      "Turning the echo up too soon and losing the track identity.",
+      "Bringing the volume back in before the phrase is ready.",
+      "Overusing the filter and causing the mix to feel unstable.",
+    ],
+    practice:
+      "Practice this move on a track with a clear phrase and vocal phrase. Start with the volume drop, then count the bars before reintroducing the main channel. Repeat until you can do it without looking at the mixer.",
+    performanceCue:
+      "This move works best when you treat the echo as a lift, not a distraction. If the track starts to lose shape, bring the return down and let the groove reassert itself before pushing the effect again.",
+  },
+  {
+    slug: "seventy-five-percent-echo-blend",
+    title: "75% Echo Blend",
+    level: "Intermediate",
+    time: "12 min",
+    summary:
+      "Use the echo return at about 75% to create air and movement while preserving the track’s tension.",
+    points: ["FX depth", "Return level", "Groove protection", "Controlled air"],
+    steps: [
+      "Dial the FX send to a moderate level and let the delay or echo sit behind the main rhythm.",
+      "Use the channel EQ to make sure the low end stays intact and the vocal remains clear.",
+      "Bring the return up to roughly 75% while the channel fader remains controlled.",
+      "Use the filter sparingly to move the mix without flattening it.",
+      "Resolve back into a balanced mix before the next phrase starts.",
+    ],
+    listenFor: [
+      "You should feel the movement without hearing the delay dominating the track.",
+      "The main vocal or lead should still be the anchor point in the mix.",
+      "There should be enough air to feel the lift, but not so much that the music loses shape.",
+    ],
+    commonMistakes: [
+      "Turning the return up too quickly and losing the groove.",
+      "Leaving the low end muddy because the filter and echo are fighting each other.",
+      "Using the FX as a gimmick instead of a transition tool.",
+    ],
+    practice:
+      "Set one track with a strong lead line and practice letting the echo sit behind it. Keep the gain stable and only move the channel once the phrase is ready.",
+    performanceCue:
+      "Think of this as a controlled window, not a full wash. The mix should still feel like a DJ set, not a remix demo.",
+  },
+  {
+    slug: "two-loop-bar-recovery",
+    title: "2-Loop Bar Recovery",
+    level: "Advanced",
+    time: "18 min",
+    summary:
+      "Reduce the energy, drop the echo, then recover the mix in a controlled two-loop phrase before reintroducing the full volume.",
+    points: ["Volume pull-down", "Loop reset", "Bar discipline", "Full re-entry"],
+    steps: [
+      "Take the channel volume down and keep the kick and bass working as your anchor.",
+      "Hold a two-loop phrase and let the music breathe without rushing the return.",
+      "Pull the echo deeper so the effect sits behind the groove instead of on top of it.",
+      "Count the bar and prepare the re-entry on the next phrase boundary.",
+      "Bring the volume back in gradually and use the EQ to restore balance.",
+    ],
+    listenFor: [
+      "The transition should feel like a controlled dropback, not a sudden collapse.",
+      "The phrase should land cleanly, with the track re-engaging before the crowd feels lost.",
+      "The echo should support the return, not distract from it.",
+    ],
+    commonMistakes: [
+      "Returning too early and ruining the build.",
+      "Forgetting the bar count and re-entering off phrase.",
+      "Using the echo as a safety net instead of as part of the musical story.",
+    ],
+    practice:
+      "Use a track with a steady four-on-the-floor pattern and practice the full cycle: volume down, two-loop hold, echo return, volume up, phrase resolution.",
+    performanceCue:
+      "This move is about control. People will respond to the confidence of the re-entry, not the complexity of the effect.",
+  },
+  {
+    slug: "slip-loop-momentum",
+    title: "Slip Loop Momentum",
+    level: "Advanced",
+    time: "15 min",
+    summary:
+      "Use slip mode to create rhythmic tension and release without losing the track underneath the loop.",
+    points: ["Slip mode", "Loop control", "Phrase release", "Tension and release"],
+    steps: [
+      "Engage slip mode and hold a short loop in a tight section of the track.",
+      "Let the loop move while the original track continues underneath.",
+      "Release on the next phrase or at the musical point that feels natural.",
+      "Use the cue and hot cue buttons to redirect if the phrase feels awkward.",
+      "Let the release do the work instead of forcing extra FX.",
+    ],
+    listenFor: [
+      "The original track should still feel like the foundation beneath the loop.",
+      "The loop release should feel like a phrase decision, not a haphazard jump.",
+      "Your ears should hear the track continue under the loop without losing alignment.",
+    ],
+    commonMistakes: [
+      "Releasing the loop too late and losing the momentum.",
+      "Holding a loop for too long and making the track feel disconnected.",
+      "Using slip mode without a musical reason.",
+    ],
+    practice:
+      "Work with a single track and practice short slip loops on phrase ends. Record the result and listen for whether the release feels polished or rushed.",
+    performanceCue:
+      "Slip loop control should feel like a musical decision, not a technical trick. The best versions are the ones no one notices because the groove just keeps flowing.",
+  },
+  {
+    slug: "filter-and-eq-ride",
+    title: "Filter + EQ Ride",
+    level: "Intermediate",
+    time: "10 min",
+    summary:
+      "Shape the energy with filter movement and EQ carving so the blend feels smooth and alive.",
+    points: ["Filter control", "EQ carving", "Blend stability", "Dynamic shape"],
+    steps: [
+      "Use the filter on the incoming channel to create tension before the fader moves.",
+      "Pull low-end energy down first, then bring the fader in as the phrase resolves.",
+      "Use the EQ to maintain clarity and avoid frequency clashes.",
+      "Keep the master output stable while you shape the blend.",
+      "Exit the move once the phrase feels balanced again.",
+    ],
+    listenFor: [
+      "You should hear the movement happen without an obvious jump in energy.",
+      "The filter should add shape, not chaos.",
+      "The outgoing track should still feel like a living part of the set.",
+    ],
+    commonMistakes: [
+      "Opening the filter too aggressively before the balance is dialed in.",
+      "Forgetting the low-end cleanup and causing a muddy blend.",
+      "Using too much movement and making the music feel unstable.",
+    ],
+    practice:
+      "Choose two tracks with similar energy and quietly work a filter ride into the blend. Aim to make it feel like a natural lift, not a dramatic swing.",
+    performanceCue:
+      "The best filter rides feel like the room itself is breathing. If it sounds like a special effect, pull it back.",
+  },
+  {
+    slug: "phrase-swap-sequencing",
+    title: "Phrase Swap Sequencing",
+    level: "Advanced",
+    time: "20 min",
+    summary:
+      "Swap phrases between tracks by listening for the same musical point and moving the energy without losing the groove.",
+    points: ["Phrase awareness", "Hot cue memory", "Track matching", "Musical continuity"],
+    steps: [
+      "Mark the phrase starts on both tracks using hot cues or memory points.",
+      "Listen for the same harmonic or rhythmic point so the swap feels intentional.",
+      "Bring in the new track on a clean phrase and let it settle before pushing the mix deeper.",
+      "Use small EQ and filter moves to help the tracks live together.",
+      "Release the outgoing track only when the incoming phrase is locked in.",
+    ],
+    listenFor: [
+      "The phrase swap should feel seamless, almost like one continuous track.",
+      "You should not hear a hard cut or a frantic chase for rhythmic alignment.",
+      "The incoming track should feel like it belongs in the same moment.",
+    ],
+    commonMistakes: [
+      "Swapping too early before the groove has fully landed.",
+      "Trying to force the phrase instead of letting the music guide it.",
+      "Over-processing the transition with too much FX.",
+    ],
+    practice:
+      "Work with two compatible tracks, mark phrase points before the set, and practice the swap without looking at the screen. Use short, calm transitions.",
+    performanceCue:
+      "A phrase swap should feel like the track changed its direction without breaking the set’s momentum. That is where true DJ confidence lives.",
+  },
+];
