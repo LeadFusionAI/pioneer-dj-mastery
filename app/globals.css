@@ -1,196 +1,592 @@
-export type Technique = {
-  slug: string;
-  title: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
-  time: string;
-  summary: string;
-  points: string[];
-  steps: string[];
-  listenFor: string[];
-  commonMistakes: string[];
-  practice: string;
-  performanceCue: string;
-};
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-export const techniques: Technique[] = [
-  {
-    slug: "three-quarter-echo-lift",
-    title: "3/4 Echo Lift",
-    level: "Advanced",
-    time: "15 min",
-    summary:
-      "Drop the track volume slightly, build the echo to 75%, then recover the mix with a phrase-aware lift.",
-    points: ["Volume drop", "Echo return", "Phrase timing", "Clean re-entry"],
-    steps: [
-      "Set the bar or loop length to a 3/4 phrase and keep the groove stable before affecting the mix.",
-      "Reduce the incoming channel volume by a touch without losing the kick and bass foundation.",
-      "Increase the echo or delay return to around 75% so the ambience rises without swallowing the track.",
-      "Hold the main groove in the background and ride the mixer to keep the lift musical instead of abrupt.",
-      "On the next phrase, bring the volume back in and use EQ and filter movement to resolve the transition.",
-    ],
-    listenFor: [
-      "The kick should stay locked in and never disappear behind the delay.",
-      "The echo should feel like a lift, not a wash of reverb across the whole mix.",
-      "The transition should resolve on the next phrase, not in the middle of a bar.",
-    ],
-    commonMistakes: [
-      "Turning the echo up too soon and losing the track identity.",
-      "Bringing the volume back in before the phrase is ready.",
-      "Overusing the filter and causing the mix to feel unstable.",
-    ],
-    practice:
-      "Practice this move on a track with a clear phrase and vocal phrase. Start with the volume drop, then count the bars before reintroducing the main channel. Repeat until you can do it without looking at the mixer.",
-    performanceCue:
-      "This move works best when you treat the echo as a lift, not a distraction. If the track starts to lose shape, bring the return down and let the groove reassert itself before pushing the effect again.",
-  },
-  {
-    slug: "seventy-five-percent-echo-blend",
-    title: "75% Echo Blend",
-    level: "Intermediate",
-    time: "12 min",
-    summary:
-      "Use the echo return at about 75% to create air and movement while preserving the track’s tension.",
-    points: ["FX depth", "Return level", "Groove protection", "Controlled air"],
-    steps: [
-      "Dial the FX send to a moderate level and let the delay or echo sit behind the main rhythm.",
-      "Use the channel EQ to make sure the low end stays intact and the vocal remains clear.",
-      "Bring the return up to roughly 75% while the channel fader remains controlled.",
-      "Use the filter sparingly to move the mix without flattening it.",
-      "Resolve back into a balanced mix before the next phrase starts.",
-    ],
-    listenFor: [
-      "You should feel the movement without hearing the delay dominating the track.",
-      "The main vocal or lead should still be the anchor point in the mix.",
-      "There should be enough air to feel the lift, but not so much that the music loses shape.",
-    ],
-    commonMistakes: [
-      "Turning the return up too quickly and losing the groove.",
-      "Leaving the low end muddy because the filter and echo are fighting each other.",
-      "Using the FX as a gimmick instead of a transition tool.",
-    ],
-    practice:
-      "Set one track with a strong lead line and practice letting the echo sit behind it. Keep the gain stable and only move the channel once the phrase is ready.",
-    performanceCue:
-      "Think of this as a controlled window, not a full wash. The mix should still feel like a DJ set, not a remix demo.",
-  },
-  {
-    slug: "two-loop-bar-recovery",
-    title: "2-Loop Bar Recovery",
-    level: "Advanced",
-    time: "18 min",
-    summary:
-      "Reduce the energy, drop the echo, then recover the mix in a controlled two-loop phrase before reintroducing the full volume.",
-    points: ["Volume pull-down", "Loop reset", "Bar discipline", "Full re-entry"],
-    steps: [
-      "Take the channel volume down and keep the kick and bass working as your anchor.",
-      "Hold a two-loop phrase and let the music breathe without rushing the return.",
-      "Pull the echo deeper so the effect sits behind the groove instead of on top of it.",
-      "Count the bar and prepare the re-entry on the next phrase boundary.",
-      "Bring the volume back in gradually and use the EQ to restore balance.",
-    ],
-    listenFor: [
-      "The transition should feel like a controlled dropback, not a sudden collapse.",
-      "The phrase should land cleanly, with the track re-engaging before the crowd feels lost.",
-      "The echo should support the return, not distract from it.",
-    ],
-    commonMistakes: [
-      "Returning too early and ruining the build.",
-      "Forgetting the bar count and re-entering off phrase.",
-      "Using the echo as a safety net instead of as part of the musical story.",
-    ],
-    practice:
-      "Use a track with a steady four-on-the-floor pattern and practice the full cycle: volume down, two-loop hold, echo return, volume up, phrase resolution.",
-    performanceCue:
-      "This move is about control. People will respond to the confidence of the re-entry, not the complexity of the effect.",
-  },
-  {
-    slug: "slip-loop-momentum",
-    title: "Slip Loop Momentum",
-    level: "Advanced",
-    time: "15 min",
-    summary:
-      "Use slip mode to create rhythmic tension and release without losing the track underneath the loop.",
-    points: ["Slip mode", "Loop control", "Phrase release", "Tension and release"],
-    steps: [
-      "Engage slip mode and hold a short loop in a tight section of the track.",
-      "Let the loop move while the original track continues underneath.",
-      "Release on the next phrase or at the musical point that feels natural.",
-      "Use the cue and hot cue buttons to redirect if the phrase feels awkward.",
-      "Let the release do the work instead of forcing extra FX.",
-    ],
-    listenFor: [
-      "The original track should still feel like the foundation beneath the loop.",
-      "The loop release should feel like a phrase decision, not a haphazard jump.",
-      "Your ears should hear the track continue under the loop without losing alignment.",
-    ],
-    commonMistakes: [
-      "Releasing the loop too late and losing the momentum.",
-      "Holding a loop for too long and making the track feel disconnected.",
-      "Using slip mode without a musical reason.",
-    ],
-    practice:
-      "Work with a single track and practice short slip loops on phrase ends. Record the result and listen for whether the release feels polished or rushed.",
-    performanceCue:
-      "Slip loop control should feel like a musical decision, not a technical trick. The best versions are the ones no one notices because the groove just keeps flowing.",
-  },
-  {
-    slug: "filter-and-eq-ride",
-    title: "Filter + EQ Ride",
-    level: "Intermediate",
-    time: "10 min",
-    summary:
-      "Shape the energy with filter movement and EQ carving so the blend feels smooth and alive.",
-    points: ["Filter control", "EQ carving", "Blend stability", "Dynamic shape"],
-    steps: [
-      "Use the filter on the incoming channel to create tension before the fader moves.",
-      "Pull low-end energy down first, then bring the fader in as the phrase resolves.",
-      "Use the EQ to maintain clarity and avoid frequency clashes.",
-      "Keep the master output stable while you shape the blend.",
-      "Exit the move once the phrase feels balanced again.",
-    ],
-    listenFor: [
-      "You should hear the movement happen without an obvious jump in energy.",
-      "The filter should add shape, not chaos.",
-      "The outgoing track should still feel like a living part of the set.",
-    ],
-    commonMistakes: [
-      "Opening the filter too aggressively before the balance is dialed in.",
-      "Forgetting the low-end cleanup and causing a muddy blend.",
-      "Using too much movement and making the music feel unstable.",
-    ],
-    practice:
-      "Choose two tracks with similar energy and quietly work a filter ride into the blend. Aim to make it feel like a natural lift, not a dramatic swing.",
-    performanceCue:
-      "The best filter rides feel like the room itself is breathing. If it sounds like a special effect, pull it back.",
-  },
-  {
-    slug: "phrase-swap-sequencing",
-    title: "Phrase Swap Sequencing",
-    level: "Advanced",
-    time: "20 min",
-    summary:
-      "Swap phrases between tracks by listening for the same musical point and moving the energy without losing the groove.",
-    points: ["Phrase awareness", "Hot cue memory", "Track matching", "Musical continuity"],
-    steps: [
-      "Mark the phrase starts on both tracks using hot cues or memory points.",
-      "Listen for the same harmonic or rhythmic point so the swap feels intentional.",
-      "Bring in the new track on a clean phrase and let it settle before pushing the mix deeper.",
-      "Use small EQ and filter moves to help the tracks live together.",
-      "Release the outgoing track only when the incoming phrase is locked in.",
-    ],
-    listenFor: [
-      "The phrase swap should feel seamless, almost like one continuous track.",
-      "You should not hear a hard cut or a frantic chase for rhythmic alignment.",
-      "The incoming track should feel like it belongs in the same moment.",
-    ],
-    commonMistakes: [
-      "Swapping too early before the groove has fully landed.",
-      "Trying to force the phrase instead of letting the music guide it.",
-      "Over-processing the transition with too much FX.",
-    ],
-    practice:
-      "Work with two compatible tracks, mark phrase points before the set, and practice the swap without looking at the screen. Use short, calm transitions.",
-    performanceCue:
-      "A phrase swap should feel like the track changed its direction without breaking the set’s momentum. That is where true DJ confidence lives.",
-  },
-];
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0969da;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.subtext {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Page Layout */
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.inner-page {
+  padding: 3rem 2rem;
+}
+
+/* Header & Nav */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 3rem;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0969da 0%, #1f6feb 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.brand-block div {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-block h1 {
+  margin-bottom: 0.25rem;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: #0969da;
+}
+
+/* Hero Section */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.hero-copy h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+}
+
+.primary-btn {
+  background: #0969da;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #0860ca;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: #f6f8fa;
+  color: #0969da;
+  border: 1px solid #e1e4e8;
+}
+
+.secondary-btn:hover {
+  background: #eaeef2;
+  border-color: #0969da;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #f6f8fa 0%, #eaeef2 100%);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e1e4e8;
+}
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mini-stats div {
+  text-align: center;
+}
+
+.mini-stats strong {
+  display: block;
+  font-size: 2rem;
+  color: #0969da;
+  margin-bottom: 0.5rem;
+}
+
+.mini-stats span {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.hero-visual {
+  width: 100%;
+  height: 12rem;
+  background: linear-gradient(45deg, #0969da 0%, #1f6feb 100%);
+  border-radius: 0.375rem;
+  opacity: 0.1;
+}
+
+.color-strip {
+  height: 4px;
+  background: linear-gradient(90deg, #0969da, #1f6feb, #0969da);
+  border-radius: 2px;
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: #0969da;
+  box-shadow: 0 4px 16px rgba(9, 105, 218, 0.1);
+}
+
+.feature-card.highlight {
+  background: linear-gradient(135deg, #f6f8fa 0%, #eaeef2 100%);
+  border-color: #0969da;
+}
+
+.feature-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0969da;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Technique Section */
+.technique-section {
+  margin-bottom: 5rem;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-heading.narrow {
+  text-align: left;
+}
+
+.technique-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.technique-card {
+  padding: 1.5rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  background: white;
+}
+
+.technique-card:hover {
+  border-color: #0969da;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.technique-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.technique-level {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  background: #f6f8fa;
+  color: #0969da;
+}
+
+.technique-time {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.technique-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+.technique-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.technique-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.technique-card li {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.technique-card li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #0969da;
+}
+
+.inline-link {
+  display: inline-block;
+  color: #0969da;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: all 0.2s;
+}
+
+.inline-link:hover {
+  color: #0860ca;
+  transform: translateX(4px);
+}
+
+/* Detail Pages */
+.technique-detail {
+  padding: 3rem 2rem;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f6f8fa;
+}
+
+.detail-header h2 {
+  max-width: 70%;
+}
+
+.time-badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0969da;
+  background: #f6f8fa;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.detail-panel {
+  padding: 2rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 0.5rem;
+  background: white;
+}
+
+.detail-panel.accent {
+  background: #f6f8fa;
+  border-color: #0969da;
+}
+
+.detail-panel.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-panel h3 {
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.detail-panel ol,
+.detail-panel ul {
+  padding-left: 2rem;
+  margin: 0;
+}
+
+.detail-panel li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.detail-panel ol li:before {
+  font-weight: 600;
+  color: #0969da;
+}
+
+/* Gear Sections */
+.page-header-card {
+  background: linear-gradient(135deg, #f6f8fa 0%, #eaeef2 100%);
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.page-header-card .eyebrow {
+  display: block;
+}
+
+.gear-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.gear-panel {
+  padding: 2rem;
+  border: 2px solid #0969da;
+  border-radius: 0.5rem;
+  background: white;
+}
+
+.gear-panel > div {
+  margin-bottom: 1.5rem;
+}
+
+.gear-panel h3 {
+  margin-bottom: 1rem;
+}
+
+.gear-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gear-panel li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.gear-panel li:last-child {
+  border-bottom: none;
+}
+
+.stacked-techniques {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.course-row {
+  padding: 1.5rem 2rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 0.5rem;
+  background: white;
+  transition: all 0.3s;
+}
+
+.course-row:hover {
+  border-color: #0969da;
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.08);
+}
+
+.course-row-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-row h3 {
+  margin: 0;
+}
+
+.course-row p {
+  margin: 0.5rem 0 1rem 0;
+  color: #666;
+}
+
+.row-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gear-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
